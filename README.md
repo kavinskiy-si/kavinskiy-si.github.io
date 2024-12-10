@@ -1,1 +1,0 @@
-# kavinskiy-si.github.io
