@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Osnove JavaScript - Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1e4fd6;
+    }
+
+    input {
+      padding: 6px 8px;
+      width: 100%;
+      margin-bottom: 8px;
+      box-sizing: border-box;
+    }
+
+    .result {
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .watermark {
+      position: fixed;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(100, 100, 100, 0.55);
+      font-size: 12px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 9999;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Demonstracija osnova JavaScript-a</h1>
+
+<div class="container">
+
+  <div class="card">
+    <h3>1. Alert poruka</h3>
+    <button onclick="prikaziAlert()">Prikaži alert</button>
+  </div>
+
+  <div class="card">
+    <h3>2. Promena teksta</h3>
+    <p id="tekst">Ovo je originalni tekst</p>
+    <button onclick="promeniTekst()">Promeni</button>
+  </div>
+
+  <div class="card">
+    <h3>3. Sabiranje brojeva</h3>
+    <input id="a" type="number" placeholder="Broj A">
+    <input id="b" type="number" placeholder="Broj B">
+    <button onclick="saberi()">Saberi</button>
+    <div class="result" id="zbir"></div>
+  </div>
+
+  <div class="card">
+    <h3>4. Par ili nepar</h3>
+    <input id="broj" type="number" placeholder="Unesi broj">
+    <button onclick="parNepar()">Proveri</button>
+    <div class="result" id="par"></div>
+  </div>
+
+  <div class="card">
+    <h3>5. Random broj</h3>
+    <button onclick="randomBroj()">Generiši</button>
+    <div class="result" id="random"></div>
+  </div>
+
+  <div class="card">
+    <h3>6. Trenutno vreme</h3>
+    <button onclick="prikaziVreme()">Prikaži vreme</button>
+    <div class="result" id="vreme"></div>
+  </div>
+
+  <div class="card">
+    <h3>7. Promena boje pozadine</h3>
+    <button onclick="promeniBoju()">Promeni boju</button>
+  </div>
+
+  <div class="card">
+    <h3>8. Brojač klikova</h3>
+    <button onclick="brojac()">Klikni</button>
+    <div class="result" id="klikovi">0</div>
+  </div>
+
+  <div class="card">
+    <h3>9. Dužina teksta</h3>
+    <input id="unosTeksta" type="text" placeholder="Unesi tekst">
+    <button onclick="duzinaTeksta()">Izračunaj</button>
+    <div class="result" id="duzina"></div>
+  </div>
+
+  <div class="card">
+    <h3>10. Toggle prikaz</h3>
+    <button onclick="toggle()">Prikaži / sakrij</button>
+    <p id="sakriveno">Ovaj tekst se može sakriti</p>
+  </div>
+
+  <div class="watermark">Powered by Semion Jegorov for Sedma Beogradska Gimnazija</div>
+
+</div>
+
+<script>
+  let klikCount = 0;
+
+  function prikaziAlert() {
+    alert("Zdravo! Ovo je JavaScript alert.");
+  }
+
+  function promeniTekst() {
+    document.getElementById("tekst").textContent = "Tekst je promenjen!";
+  }
+
+  function saberi() {
+    const a = Number(document.getElementById("a").value);
+    const b = Number(document.getElementById("b").value);
+    document.getElementById("zbir").textContent = "Zbir: " + (a + b);
+  }
+
+  function parNepar() {
+    const broj = document.getElementById("broj").value;
+    document.getElementById("par").textContent = broj % 2 === 0 ? "Paran" : "Neparan";
+  }
+
+  function randomBroj() {
+    document.getElementById("random").textContent = Math.floor(Math.random() * 100) + 1;
+  }
+
+  function prikaziVreme() {
+    document.getElementById("vreme").textContent = new Date().toLocaleTimeString();
+  }
+
+  function promeniBoju() {
+    document.body.style.background = "hsl(" + Math.random() * 360 + ", 70%, 90%)";
+  }
+
+  function brojac() {
+    klikCount++;
+    document.getElementById("klikovi").textContent = klikCount;
+  }
+
+  function duzinaTeksta() {
+    const text = document.getElementById("unosTeksta").value;
+    document.getElementById("duzina").textContent = "Dužina: " + text.length;
+  }
+
+  function toggle() {
+    const el = document.getElementById("sakriveno");
+    el.style.display = el.style.display === "none" ? "block" : "none";
+  }
+</script>
+
+</body>
+</html>
