@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AutoPoster — Personal Content Publishing Tool</title>
+
+    <meta
+        name="description"
+        content="AutoPoster is a personal, non-commercial tool for publishing video content to social media platforms through official APIs."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #0f1115;
+            color: #e8eaed;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1050px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 1px solid #242832;
+            background: #0f1115;
+        }
+
+        nav {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            color: #aeb4c0;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            padding: 100px 0 80px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border: 1px solid #303641;
+            border-radius: 999px;
+            color: #aeb4c0;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            max-width: 800px;
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin: 0 0 24px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: #aeb4c0;
+            font-size: 19px;
+            margin: 0;
+        }
+
+        .section {
+            padding: 80px 0;
+            border-top: 1px solid #242832;
+        }
+
+        h2 {
+            font-size: 32px;
+            letter-spacing: -1px;
+            margin: 0 0 20px;
+        }
+
+        h3 {
+            font-size: 19px;
+            margin: 0 0 10px;
+        }
+
+        .section-intro {
+            max-width: 720px;
+            color: #aeb4c0;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            border: 1px solid #292e38;
+            background: #14171d;
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .card p {
+            color: #aeb4c0;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .workflow {
+            display: grid;
+            gap: 12px;
+            max-width: 800px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 16px;
+            align-items: start;
+            border: 1px solid #292e38;
+            background: #14171d;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #242933;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step p {
+            margin: 0;
+            color: #aeb4c0;
+            font-size: 15px;
+        }
+
+        .notice {
+            border-left: 3px solid #777f8d;
+            padding: 16px 20px;
+            background: #14171d;
+            color: #bfc4cd;
+            margin-top: 30px;
+        }
+
+        ul {
+            color: #aeb4c0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 18px;
+            border: 1px solid #343a45;
+            border-radius: 9px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background: #191d24;
+        }
+
+        footer {
+            border-top: 1px solid #242832;
+            padding: 35px 0;
+            color: #777f8d;
+            font-size: 13px;
+        }
+
+        @media (max-width: 750px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">AutoPoster</div>
+
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#tiktok">TikTok Integration</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+        <div class="container">
+
+            <div class="badge">
+                Personal · Non-commercial · Private project
+            </div>
+
+            <h1>
+                AutoPoster
+            </h1>
+
+            <p>
+                A personal content publishing tool designed to simplify
+                the process of publishing short-form video content to
+                supported social media platforms.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section" id="about">
+        <div class="container">
+
+            <h2>About the project</h2>
+
+            <p class="section-intro">
+                AutoPoster is a personal, non-commercial automation project.
+                It is designed for the developer's own social media accounts
+                and is not intended to provide a public service or sell
+                social media automation services.
+            </p>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Personal use</h3>
+
+                    <p>
+                        The application is developed for personal use and
+                        manages only accounts authorized by the developer.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Video publishing</h3>
+
+                    <p>
+                        The application takes locally prepared video files
+                        and associated captions and publishes them to
+                        supported platforms.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Official APIs</h3>
+
+                    <p>
+                        Where an official API is available, AutoPoster uses
+                        the platform's official authentication and API
+                        mechanisms.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- WORKFLOW -->
+
+    <section class="section">
+        <div class="container">
+
+            <h2>How AutoPoster works</h2>
+
+            <p class="section-intro">
+                Content is prepared locally before it is sent to a social
+                media platform.
+            </p>
+
+            <div class="workflow">
+
+                <div class="step">
+                    <div class="step-number">1</div>
+
+                    <div>
+                        <h3>Prepare content</h3>
+
+                        <p>
+                            A video file and its corresponding caption are
+                            placed into a local publishing queue.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+
+                    <div>
+                        <h3>Authenticate</h3>
+
+                        <p>
+                            The user authorizes the application through the
+                            authentication mechanism provided by the
+                            respective platform.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+
+                    <div>
+                        <h3>Publish</h3>
+
+                        <p>
+                            AutoPoster sends the selected video and metadata
+                            to the authorized social media account.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+
+                    <div>
+                        <h3>Track the result</h3>
+
+                        <p>
+                            The application reports whether the requested
+                            publishing operation succeeded or failed.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- TIKTOK -->
+
+    <section class="section" id="tiktok">
+        <div class="container">
+
+            <h2>TikTok integration</h2>
+
+            <p class="section-intro">
+                AutoPoster uses TikTok's official Content Posting API for
+                TikTok publishing functionality.
+            </p>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>OAuth authorization</h3>
+
+                    <p>
+                        The TikTok account is connected through TikTok's
+                        official OAuth authorization flow.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Content Posting API</h3>
+
+                    <p>
+                        The application uses the official TikTok Content
+                        Posting API to submit video content for publishing.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>User-controlled content</h3>
+
+                    <p>
+                        Videos and captions are selected by the user before
+                        they are submitted to TikTok.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="notice">
+                AutoPoster does not request or store a user's TikTok
+                password. Authentication is performed through TikTok's
+                authorization system.
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- DATA -->
+
+    <section class="section">
+        <div class="container">
+
+            <h2>Data handling</h2>
+
+            <p class="section-intro">
+                AutoPoster is designed to minimize the amount of information
+                it processes.
+            </p>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Video files</h3>
+
+                    <p>
+                        Videos are selected from the local publishing queue
+                        and transmitted to the selected platform when the
+                        user initiates publishing.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Captions</h3>
+
+                    <p>
+                        Captions are stored locally alongside the corresponding
+                        video and are sent to the selected platform as part
+                        of the publishing request.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Authentication</h3>
+
+                    <p>
+                        OAuth credentials and tokens are used only to
+                        authenticate authorized API requests.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- PRIVACY -->
+
+    <section class="section" id="privacy">
+        <div class="container">
+
+            <h2>Privacy Policy</h2>
+
+            <p class="section-intro">
+                AutoPoster does not sell personal information and does not
+                use connected social media data for advertising.
+            </p>
+
+            <ul>
+                <li>
+                    Social media accounts are connected through official
+                    authorization mechanisms.
+                </li>
+
+                <li>
+                    AutoPoster does not request social media passwords.
+                </li>
+
+                <li>
+                    User-provided videos and captions are used to perform
+                    the requested publishing operation.
+                </li>
+
+                <li>
+                    Authentication tokens are not intentionally shared with
+                    unrelated third parties.
+                </li>
+
+                <li>
+                    Users can revoke access to the application through the
+                    relevant social media platform.
+                </li>
+            </ul>
+
+            <div class="links">
+                <a class="button" href="privacy.html">
+                    Read full Privacy Policy
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- TERMS -->
+
+    <section class="section" id="terms">
+        <div class="container">
+
+            <h2>Terms of Service</h2>
+
+            <p class="section-intro">
+                AutoPoster is a personal, non-commercial project. The service
+                is intended solely for authorized use by the developer.
+            </p>
+
+            <ul>
+                <li>
+                    Users must only connect accounts they own or are
+                    authorized to manage.
+                </li>
+
+                <li>
+                    Users are responsible for the content they publish.
+                </li>
+
+                <li>
+                    Users must comply with the policies of the platforms
+                    connected to AutoPoster.
+                </li>
+
+                <li>
+                    AutoPoster does not guarantee successful publication,
+                    availability, or continued compatibility with third-party
+                    APIs.
+                </li>
+            </ul>
+
+            <div class="links">
+                <a class="button" href="terms.html">
+                    Read full Terms of Service
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<footer>
+    <div class="container">
+        <div>
+            AutoPoster · Personal non-commercial project
+        </div>
+
+        <div style="margin-top: 8px;">
+            Last updated: August 12, 2026
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
